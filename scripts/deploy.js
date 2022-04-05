@@ -1,8 +1,15 @@
 const hre = require("hardhat");
 
 async function main() {
+  const HHNFT = await hre.ethers.getContractFactory("HHNFT");
+  const hhnft = await HHNFT.deploy();
+  
+  await hhnft.deployed();
 
+  console.log("hhnft deployed to:", hhnft.address);
+  console.log("DEPLOYED OWNER: ", await hhnft.signer.getAddress())
 
+  console.log("CONTRACT NAME", await hhnft.name())
 }
 
 main()
