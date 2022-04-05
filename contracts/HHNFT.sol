@@ -24,4 +24,9 @@ contract HHNFT is ERC721, Ownable {
     function setTokenURI(uint256 _id, string memory _uri) public onlyOwner {
         _uris[_id] = string(abi.encodePacked(_uri, ".json"));
     }
+
+    function tokenURI(uint256 _tokenId) public view override returns (string memory) {
+        require(bytes(_uris[_tokenId]).length > 0, "Unexistant token");
+        return _uris[_tokenId];
+    }
 }
