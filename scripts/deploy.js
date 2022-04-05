@@ -1,7 +1,7 @@
 const hre = require("hardhat");
 
 async function main() {
-  const HHNFT = await hre.ethers.getContractFactory("HHNFT");
+  const HHNFT = await hre.ethers.getContractFactory("contracts/HHNFT_flat.sol:HHNFT");
   const hhnft = await HHNFT.deploy();
   
   await hhnft.deployed();
